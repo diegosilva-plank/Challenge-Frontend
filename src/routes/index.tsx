@@ -1,0 +1,13 @@
+import '../css/index.css'
+import { Footer } from "../components/Footer";
+import { Navbar } from "../components/Navbar";
+
+export const Index = () => {
+    return (<>
+        <Navbar />
+        <div id="rocket-img-div">
+        <img id="rocket-img" src="../public/rocket.gif" />
+        </div>
+        <Footer />
+    </>)
+}

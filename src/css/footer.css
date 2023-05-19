@@ -1,0 +1,15 @@
+#footer {
+    position: absolute; 
+    top: calc(100vh - 36px); 
+    margin: 0;
+}
+
+#footer-div {
+    color: white; 
+    background: linear-gradient(#5F4B8B, #313B64); 
+    height: 20px; 
+    margin: 0; 
+    width: 100vw; 
+    text-align: center; 
+    box-shadow: 0 0 15px black;
+}
