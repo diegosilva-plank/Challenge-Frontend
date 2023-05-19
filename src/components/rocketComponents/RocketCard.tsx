@@ -5,7 +5,7 @@ interface RocketCardProps {
     id: string
     name: string
     editButton: MouseEventHandler<HTMLDivElement>
-    delete: (id: string) => MouseEventHandler<HTMLDivElement>
+    deleteButton: MouseEventHandler<HTMLDivElement>
 }
 
 export const RocketCard = (props: RocketCardProps) => (
@@ -14,7 +14,7 @@ export const RocketCard = (props: RocketCardProps) => (
         <div className="btn-div">
             <div className="btn btn-blue launch-btn">Launch</div>
             <div className="btn btn-pink edit-btn" onClick={props.editButton}>Edit</div>
-            <div className="btn btn-red delete-btn" onClick={props.delete(props.id)}>Delete</div>
+            <div className="btn btn-red delete-btn" onClick={props.deleteButton}>Delete</div>
         </div>
     </Card>
 )

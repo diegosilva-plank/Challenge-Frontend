@@ -8,11 +8,14 @@ import { useState } from "react";
 import { AddRocketModal } from "../components/rocketComponents/AddRocketModal";
 import { v4 as uuid } from 'uuid'
 import { EditRocketModal } from "../components/rocketComponents/EditRocketModal";
+import { DeleteRocketModal } from "../components/rocketComponents/DeleteRocketModal";
 
 export const Rockets = () => {
     const [rocketsState, setRocketsState] = useState({
         showEditRocketModal: false,
         idEditModal: '0',
+        showDeleteRocketModal: false,
+        idDeleteModal: '0',
         showAddRocketModal: false,
         rockets: rockets
     })
@@ -34,6 +37,16 @@ export const Rockets = () => {
         }
     }
 
+    const showDeleteRocketModalToggle = (id: string) => {
+        return () => {
+            setRocketsState(state => ({
+                ...state,
+                idDeleteModal: id,
+                showDeleteRocketModal: !state.showDeleteRocketModal
+            }))
+        }
+    }
+
     const deleteRocket = (id: string) => {
         return () => {
             let index = rocketsState.rockets.length
@@ -45,7 +58,8 @@ export const Rockets = () => {
 
             setRocketsState(state => ({
                 ...state,
-                rockets: new_rockets
+                rockets: new_rockets,
+                showDeleteRocketModal: !state.showDeleteRocketModal
             }))
         }
     }
@@ -81,8 +95,7 @@ export const Rockets = () => {
         }
     }
 
-    const rocketsCards = rocketsState.rockets.map(rocket => <RocketCard id={rocket.id} name={rocket.name} delete={deleteRocket} editButton={showEditRocketModalToggle(rocket.id)} />) 
-    // const editRocketModals = rocketsState.rockets.map(rocket => { <EditRocketModal id={rocket.id} close={showEditRocketModalToggle} editRocket={editRocket} /> })
+    const rocketsCards = rocketsState.rockets.map(rocket => <RocketCard id={rocket.id} name={rocket.name} deleteButton={showDeleteRocketModalToggle(rocket.id)} editButton={showEditRocketModalToggle(rocket.id)} />) 
 
     return (
         <>
@@ -92,6 +105,7 @@ export const Rockets = () => {
                 <AddRocketCard addRocketBtn={showAddRocketModalToggle} />
                 { rocketsState.showAddRocketModal && <AddRocketModal close={showAddRocketModalToggle} addRocket={addRocket}/> }
                 { rocketsState.showEditRocketModal && <EditRocketModal id={rocketsState.idEditModal} close={showEditRocketModalToggle(rocketsState.idEditModal)} editRocket={editRocket} /> }
+                { rocketsState.showDeleteRocketModal && <DeleteRocketModal id={rocketsState.idDeleteModal} close={showDeleteRocketModalToggle(rocketsState.idDeleteModal)} deleteRocket={deleteRocket} />}
             </Grid>
             <Footer />
         </>
