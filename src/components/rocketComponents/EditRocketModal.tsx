@@ -1,8 +1,9 @@
 import { ChangeEvent, MouseEventHandler, useState } from "react"
 import { Modal } from "../Modal"
+import { IRocket } from "../../interfaces/IRocket"
 
 interface EditRocketModalProps {
-    id: string
+    rocket: IRocket
     close: MouseEventHandler<HTMLDivElement>
     editRocket: (id: string, name: string) => MouseEventHandler<HTMLDivElement>
 }
@@ -19,12 +20,12 @@ export const EditRocketModal = (props: EditRocketModalProps) => {
             <div className="input-div-ctn">
                 <div className="input-div">
                     <label>Rocket name:</label>
-                    <input type="text" placeholder="Rocket name" onChange={handleChange} />
+                    <input type="text" placeholder={props.rocket.name} onChange={handleChange} />
                 </div>
             </div>
             <div className="btn-div">
                 <div className="btn btn-red" onClick={props.close}>Cancel</div>
-                <div className="btn btn-green" onClick={props.editRocket(props.id, nameInput)}>Confirm</div>
+                <div className="btn btn-green" onClick={props.editRocket(props.rocket.id, nameInput)}>Confirm</div>
             </div>
         </Modal>
     )

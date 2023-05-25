@@ -1,8 +1,9 @@
 import { MouseEventHandler } from "react"
 import { Modal } from "../Modal"
+import { IRocket } from "../../interfaces/IRocket"
 
 interface DeleteRocketModalProps {
-    id: string
+    rocket: IRocket
     close: MouseEventHandler<HTMLDivElement>
     deleteRocket: (id: string) => MouseEventHandler<HTMLDivElement>
 }
@@ -17,7 +18,7 @@ export const DeleteRocketModal = (props: DeleteRocketModalProps) => {
             </div>
             <div className="btn-div">
                 <div className="btn btn-red" onClick={props.close}>Cancel</div>
-                <div className="btn btn-green" onClick={props.deleteRocket(props.id)}>Confirm</div>
+                <div className="btn btn-green" onClick={props.deleteRocket(props.rocket.id)}>Confirm</div>
             </div>
         </Modal>
     )
