@@ -1,6 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import { Rockets } from "./routes/Rockets";
 import { Index } from "./routes/Index";
+import { Launches } from "./routes/Launches";
 
 
 export const router = createBrowserRouter([
@@ -11,5 +12,9 @@ export const router = createBrowserRouter([
     {
         path: 'rockets',
         element: <Rockets />
+    },
+    {
+        path: 'launches',
+        element: <Launches />
     }
 ])
