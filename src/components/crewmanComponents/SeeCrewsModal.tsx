@@ -16,6 +16,6 @@ export const SeeCrewsModal = (props: SeeCrewsModalProps) => {
             <div className="btn-div">
                 <a href="crews" style={{textDecoration: 'none'}}><div className="btn btn-green go-to-crews-btn">Go to Crews</div></a>
             </div>
-    </Modal>
+        </Modal>
     )
 }

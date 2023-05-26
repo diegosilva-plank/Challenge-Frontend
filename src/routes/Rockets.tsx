@@ -5,14 +5,13 @@ import { RocketCard } from '../components/rocketComponents/RocketCard';
 import { AddRocketCard } from "../components/rocketComponents/AddRocketCard";
 import { useEffect, useState } from "react";
 import { AddRocketModal } from "../components/rocketComponents/AddRocketModal";
-import { v4 as uuid } from 'uuid'
 import { EditRocketModal } from "../components/rocketComponents/EditRocketModal";
 import { DeleteRocketModal } from "../components/rocketComponents/DeleteRocketModal";
 import { IRocket } from "../interfaces/IRocket"
 import axios from "axios";
 import { ILaunch } from "../interfaces/ILaunch";
 import { LaunchRocketModal } from "../components/rocketComponents/LaunchRocketModal";
-import { Route, redirect, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export const Rockets = () => {
     const navigate = useNavigate()

@@ -3,6 +3,7 @@ import { Rockets } from "./routes/Rockets";
 import { Index } from "./routes/Index";
 import { Launches } from "./routes/Launches";
 import { Crewmen } from "./routes/Crewmen";
+import { Crews } from "./routes/Crews";
 
 
 export const router = createBrowserRouter([
@@ -21,5 +22,9 @@ export const router = createBrowserRouter([
     {
         path: 'crewmen',
         element: <Crewmen />
+    },
+    {
+        path: 'crews',
+        element: <Crews />
     }
 ])

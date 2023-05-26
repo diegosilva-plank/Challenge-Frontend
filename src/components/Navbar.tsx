@@ -19,7 +19,7 @@ export const Navbar = () => (
         <div className="nav-links">
             <a className="menu-item" href="rockets">Rockets</a>
             <a className="menu-item" href="launches">Launches</a>
-            <a className="menu-item" href="crews.html">Crews</a>
+            <a className="menu-item" href="crews">Crews</a>
             <a className="menu-item" href="crewmen">Crewmen</a>
         </div>
     </div>
