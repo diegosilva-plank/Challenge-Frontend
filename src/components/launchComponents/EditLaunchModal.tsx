@@ -9,15 +9,15 @@ interface EditLaunchModalProps {
 }
 
 export const EditLaunchModal = (props: EditLaunchModalProps) => {
-    const [launchCodeInput, setLaunchCodeInput] = useState('')
+    const [launchCodeInput, setLaunchCodeInput] = useState(props.launch.launch_code)
     const [dateInput, setDateInput] = useState(props.launch.date)
     const [crewInput, setCrewInput] = useState('')
     const [successInput, setSucessInput] = useState(props.launch.success)
 
-    const handleChange = (setFunction: React.Dispatch<React.SetStateAction<any>>) => (event: ChangeEvent) => {
+    const handleChange = (setFunction: React.Dispatch<React.SetStateAction<any>>, std?: string) => (event: ChangeEvent) => {
         const element = event.target as HTMLInputElement
         if (element.type != 'checkbox') {
-            setFunction(element.value)
+            setFunction(element.value || std)
         } else {
             setFunction(element.checked)
         }
@@ -36,19 +36,19 @@ export const EditLaunchModal = (props: EditLaunchModalProps) => {
             <div className="input-div-ctn">
                 <div className="input-div">
                     <label>Launch code:</label>
-                    <input type="text" placeholder={props.launch.launch_code} onChange={ handleChange(setLaunchCodeInput) } />
+                    <input type="text" placeholder={props.launch.launch_code} onChange={ handleChange(setLaunchCodeInput, props.launch.launch_code) } />
                 </div>
             </div>
             <div className="input-div-ctn">
                 <div className="input-div">
                     <label>Date:</label>
-                    <input type="text" onFocus={_onFocus} onBlur={_onBlur} placeholder={props.launch.date} onChange={ handleChange(setDateInput) } />
+                    <input type="text" onFocus={_onFocus} onBlur={_onBlur} placeholder={props.launch.date} onChange={ handleChange(setDateInput, props.launch.date) } />
                 </div>
             </div>
             <div className="input-div-ctn">
                 <div className="input-div">
                     <label>Crew:</label>
-                    <input type="text" placeholder={props.launch.crew?.name ?? ''} onChange={ handleChange(setCrewInput) } />
+                    <input type="text" placeholder={props.launch.crew?.name ?? ''} onChange={ handleChange(setCrewInput, props.launch.crew.name) } />
                 </div>
             </div>
             <div className="input-div-ctn">

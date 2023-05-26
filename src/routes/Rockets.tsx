@@ -38,12 +38,8 @@ export const Rockets = () => {
     const showLaunchRocketModalToggle = (rocket: IRocket) => showModalToggle(setShowLaunchRocketModal, setRocketLaunchModal, rocket)
 
     const addRocket = (name: string) => {
-        const new_rocket = {
-            id: uuid(),
-            name
-        }
         return async () => {
-            await axios.post('http://localhost:3333/rocket', new_rocket)
+            await axios.post('http://localhost:3333/rocket', { name })
             setShowAddRocketModal(prev => !prev)
             fetch()
         }
@@ -90,8 +86,6 @@ export const Rockets = () => {
     useEffect(() => {
         fetch()
     }, [])
-
-    console.log('loaded')
 
     return (
         <>

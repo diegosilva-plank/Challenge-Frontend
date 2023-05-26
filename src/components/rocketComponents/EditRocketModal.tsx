@@ -9,10 +9,10 @@ interface EditRocketModalProps {
 }
 
 export const EditRocketModal = (props: EditRocketModalProps) => {
-    const [nameInput, setNameInput] = useState('')
+    const [nameInput, setNameInput] = useState(props.rocket.name)
     const handleChange = (event: ChangeEvent) => {
         const element = event.target as HTMLInputElement
-        setNameInput(element.value)
+        setNameInput(element.value || props.rocket.name)
     }
 
     return (
