@@ -9,13 +9,14 @@ import { EditRocketModal } from "../components/rocketComponents/EditRocketModal"
 import { DeleteRocketModal } from "../components/rocketComponents/DeleteRocketModal";
 import { IRocket } from "../interfaces/IRocket"
 import axios from "axios";
-import { ILaunch } from "../interfaces/ILaunch";
 import { LaunchRocketModal } from "../components/rocketComponents/LaunchRocketModal";
 import { useNavigate } from "react-router-dom";
+import { ICrew } from "../interfaces/ICrew";
 
 export const Rockets = () => {
     const navigate = useNavigate()
 
+    const [crews, setCrews] = useState([] as ICrew[])
     const [rockets, setRockets] = useState([] as IRocket[])
     const [showEditRocketModal, setShowEditRocketModal] = useState(false)
     const [rocketEditModal, setRocketEditModal] = useState({} as IRocket)
@@ -60,16 +61,13 @@ export const Rockets = () => {
         }
     }
 
-    const launchRocket = (rocket_id: string, launch: Partial<Omit<ILaunch, 'id'>>) => {
+    const launchRocket = (rocket_id: string, launch: any) => {
         const new_launch = {
             rocket: rocket_id,
-            crew: "da8c64a2-f50e-4cf2-a661-6ac4668ce7c5",
             ...launch
         }
         return async () => {
             await axios.post('http://localhost:3333/launch', new_launch)
-            console.log(new_launch)
-            console.log('clicked confirm')
             setShowLaunchRocketModal(prev => !prev)
             fetch()
             navigate('/launches')
@@ -78,8 +76,9 @@ export const Rockets = () => {
 
     const fetch = async () => {
         const got  = await axios.get('http://localhost:3333/rocket')
-        console.log(got.data)
         setRockets(got.data)
+        const got_crews = await axios.get('http://localhost:3333/crew')
+        setCrews(got_crews.data)
     }
 
     useEffect(() => {
@@ -95,7 +94,7 @@ export const Rockets = () => {
                 { showAddRocketModal && <AddRocketModal close={showAddRocketModalToggle} addRocket={addRocket}/> }
                 { showEditRocketModal && <EditRocketModal rocket={rocketEditModal} close={showEditRocketModalToggle(rocketEditModal)} editRocket={editRocket} /> }
                 { showDeleteRocketModal && <DeleteRocketModal rocket={rocketDeleteModal} close={showDeleteRocketModalToggle(rocketDeleteModal)} deleteRocket={deleteRocket} />}
-                { showLaunchRocketModal && <LaunchRocketModal rocket={rocketLaunchModal} close={showLaunchRocketModalToggle(rocketLaunchModal)} addLaunch={launchRocket} />}
+                { showLaunchRocketModal && <LaunchRocketModal allCrews={crews} rocket={rocketLaunchModal} close={showLaunchRocketModalToggle(rocketLaunchModal)} addLaunch={launchRocket} />}
             </Grid>
             <Footer />
         </>

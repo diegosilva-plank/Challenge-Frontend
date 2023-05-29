@@ -1,13 +1,14 @@
 import '../../css/modal.css'
 import { ChangeEvent, MouseEventHandler, useState } from 'react';
 import { Modal } from "../Modal";
-import { ILaunch } from '../../interfaces/ILaunch';
 import { IRocket } from '../../interfaces/IRocket';
+import { ICrew } from '../../interfaces/ICrew';
 
 interface LaunchRocketModalProps {
+    allCrews: ICrew[]
     rocket: IRocket
     close: MouseEventHandler<HTMLDivElement>
-    addLaunch: (rocket_id: string, launch: Partial<Omit<ILaunch, 'id' | 'rocket'>>) => MouseEventHandler<HTMLDivElement>
+    addLaunch: (rocket_id: string, launch: any) => MouseEventHandler<HTMLDivElement>
 }
 
 export const LaunchRocketModal = (props: LaunchRocketModalProps) => {
@@ -24,11 +25,6 @@ export const LaunchRocketModal = (props: LaunchRocketModalProps) => {
             setFunction(element.checked)
         }
     }
-
-    // const handleChange = (event: ChangeEvent) => {
-    //     const element = event.target as HTMLInputElement
-    //     setNameInput(element.value)
-    // }
 
     return (
         <Modal close={props.close}>
@@ -47,7 +43,9 @@ export const LaunchRocketModal = (props: LaunchRocketModalProps) => {
                 <div className="input-div-ctn">
                     <div className="input-div">
                         <label>Crew:</label>
-                        <input type="text" placeholder="Crew" onChange={ handleChange(setCrewInput) } />
+                        <select onChange={handleChange(setCrewInput)}>
+                            { props.allCrews.map(crew => <option value={crew.id}>{crew.name}</option>) }
+                        </select>
                     </div>
                 </div>
                 <div className="input-div-ctn">
@@ -65,6 +63,7 @@ export const LaunchRocketModal = (props: LaunchRocketModalProps) => {
                             launch_code: launchCodeInput,
                             date: dateInput,
                             success: successInput,
+                            crew: crewInput
                         })}
                     >
                         Confirm
@@ -73,18 +72,3 @@ export const LaunchRocketModal = (props: LaunchRocketModalProps) => {
         </Modal>
     )
 }
-
-// export interface ILaunch {
-//     id: string
-  
-//     launch_code: string
-  
-//     date: string
-  
-//     success: boolean
-  
-//     rocket: IRocket
-  
-//     crew: ICrew
-//   }
-  

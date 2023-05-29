@@ -9,8 +9,10 @@ import axios from "axios"
 import { MoreInfoModal } from "../components/launchComponents/MoreInfoModal"
 import { EditLaunchModal } from "../components/launchComponents/EditLaunchModal"
 import { DeleteLaunchModal } from "../components/launchComponents/DeleteLaunchModal"
+import { ICrew } from "../interfaces/ICrew"
 
 export const Launches = () => {
+    const [crews, setCrews] = useState([] as ICrew[])
     const [launches, setLaunches] = useState([] as ILaunch[])
     const [showMoreInfoModal, setShowMoreInfoModal] = useState(false)
     const [launchMoreInfoModal, setLaunchMoreInfoModal] = useState({} as ILaunch)
@@ -30,13 +32,13 @@ export const Launches = () => {
     const showEditLaunchModalToggle = (launch: ILaunch) => showModalToggle(setShowEditLaunchModal, setLaunchEditModal, launch)
     const showDeleteLaunchModalToggle = (launch: ILaunch) => showModalToggle(setShowDeleteLaunchModal, setLaunchDeleteModal, launch)
 
-    const editLaunch = (launch: ILaunch) => {
+    const editLaunch = (launch: any) => {
         return async () => {
-            console.log(launch)
             await axios.put(`http://localhost:3333/launch/${launch.id}`, {
                 launch_code: launch.launch_code,
                 date: launch.date,
-                success: launch.success
+                success: launch.success,
+                crew: launch.crew
             })
             setShowEditLaunchModal(prev => !prev)
             fetch()
@@ -53,8 +55,9 @@ export const Launches = () => {
 
     const fetch = async () => {
         const got  = await axios.get('http://localhost:3333/launch')
-        console.log(got.data)
         setLaunches(got.data)
+        const got_crews = await axios.get('http://localhost:3333/crew')
+        setCrews(got_crews.data)
     }
 
     useEffect(() => {
@@ -68,7 +71,7 @@ export const Launches = () => {
                 { launches.map(launch => <LaunchCard id={launch.id} launchCode={launch.launch_code} rocketName={launch.rocket.name} infoButton={showMoreInfoModalToggle(launch)} editButton={showEditLaunchModalToggle(launch)} deleteButton={showDeleteLaunchModalToggle(launch)} />) }
                 <GoToRocketsCard />
                 { showMoreInfoModal && <MoreInfoModal launch={launchMoreInfoModal} close={showMoreInfoModalToggle(launchMoreInfoModal)} /> }
-                { showEditLaunchModal && <EditLaunchModal launch={launchEditModal} close={showEditLaunchModalToggle(launchEditModal)} editLaunch={editLaunch} />}
+                { showEditLaunchModal && <EditLaunchModal allCrews={crews} launch={launchEditModal} close={showEditLaunchModalToggle(launchEditModal)} editLaunch={editLaunch} />}
                 { showDeleteLaunchModal && <DeleteLaunchModal launch={launchDeleteModal} close={showDeleteLaunchModalToggle(launchDeleteModal)} deleteLaunch={deleteLaunch} />}
             </Grid>
             <Footer />

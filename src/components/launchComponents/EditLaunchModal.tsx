@@ -1,11 +1,13 @@
 import { ChangeEvent, MouseEventHandler, useState } from "react"
 import { Modal } from "../Modal"
 import { ILaunch } from "../../interfaces/ILaunch"
+import { ICrew } from "../../interfaces/ICrew"
 
 interface EditLaunchModalProps {
+    allCrews: ICrew[]
     launch: ILaunch
     close: MouseEventHandler<HTMLDivElement>
-    editLaunch: (launch: ILaunch) => MouseEventHandler<HTMLDivElement>
+    editLaunch: (launch: any) => MouseEventHandler<HTMLDivElement>
 }
 
 export const EditLaunchModal = (props: EditLaunchModalProps) => {
@@ -48,7 +50,9 @@ export const EditLaunchModal = (props: EditLaunchModalProps) => {
             <div className="input-div-ctn">
                 <div className="input-div">
                     <label>Crew:</label>
-                    <input type="text" placeholder={props.launch.crew?.name ?? ''} onChange={ handleChange(setCrewInput, props.launch.crew.name) } />
+                    <select onChange={handleChange(setCrewInput)}>
+                        { props.allCrews.map(crew => <option value={crew.id}>{crew.name}</option>) }
+                    </select>
                 </div>
             </div>
             <div className="input-div-ctn">
@@ -66,7 +70,8 @@ export const EditLaunchModal = (props: EditLaunchModalProps) => {
                         ...props.launch,
                         launch_code: launchCodeInput,
                         date: dateInput,
-                        success: successInput
+                        success: successInput,
+                        crew: crewInput
                     })}
                 >
                     Confirm
