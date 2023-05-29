@@ -9,6 +9,7 @@ interface SeeCrewsModalProps {
 }
 
 export const SeeCrewsModal = (props: SeeCrewsModalProps) => {
+    console.log(props.crewman)
     return (
         <Modal close={props.close}>
             { props.crewman.crews.map(crew => <h2>{crew.name}</h2>) }
