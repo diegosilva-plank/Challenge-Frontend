@@ -1,13 +1,12 @@
 import { useEffect, useState } from "react"
 import { ICrewman } from "../interfaces/ICrewman"
 import { ICrew } from "../interfaces/ICrew"
-import axios from "axios"
 import { crewServices } from "../services/crewServices"
 import { crewmanServices } from "../services/crewmanServices"
 
 export const useCrews = () => {
-    const [crewmen, setCrewmen] = useState([] as ICrewman[])
-    const [crews, setCrews] = useState([] as ICrew[])
+    const [crewmenState, setCrewmen] = useState([] as ICrewman[])
+    const [crewsState, setCrews] = useState([] as ICrew[])
     const [showAddCrewModal, setShowAddCrewModal] = useState(false)
     const [showEditCrewModal, setShowEditCrewModal] = useState(false)
     const [crewEditModal, setCrewEditModal] = useState({} as ICrew)
@@ -57,31 +56,30 @@ export const useCrews = () => {
 
     const removeCrewmanFromCrewFactory = (crew: ICrew, crewman: ICrewman, setShowModal: React.Dispatch<React.SetStateAction<boolean>>) => {
         return async () => {
-            await axios.put(`http://localhost:3333/crew/${crew.id}`, {
-                name: crew.name,
-                crewmen: crew.crewmen.filter(crewman_of_crew => crewman_of_crew.id != crewman.id).map(crewman_of_crew => ({ id: crewman_of_crew.id }))
-            })
-            const got  = await axios.get('http://localhost:3333/crew')
-            setCrews(got.data)
-            showSeeCrewmenModalToggle(got.data.filter((crew_filter: ICrew) => crew_filter.id == crew.id)[0])()
-            showSeeCrewmenModalToggle(got.data.filter((crew_filter: ICrew) => crew_filter.id == crew.id)[0])()
+            await crewServices.removeCrewmanFromCrew(crew, crewman)
+            const crews = await crewServices.getCrews()
+            setCrews(crews)
+            showSeeCrewmenModalToggle(crews.filter((crew_filter: ICrew) => crew_filter.id == crew.id)[0])()
+            showSeeCrewmenModalToggle(crews.filter((crew_filter: ICrew) => crew_filter.id == crew.id)[0])()
             setShowModal(prev => !prev)
         }
     }
 
     const deleteCrew = (id: string) => {
         return async () => {
-            await axios.delete(`http://localhost:3333/crew/${id}`)
+            console.log(id)
+            console.log('Tentando deletar crew')
+            await crewServices.deleteCrew(id)
             setShowDeleteCrewModal(prev => !prev)
             fetch()
         }
     }
 
     const fetch = async () => {
-        const got_crews  = await axios.get('http://localhost:3333/crew')
-        setCrews(got_crews.data)
-        const got_crewmen = await axios.get('http://localhost:3333/crewman')
-        setCrewmen(got_crewmen.data)
+        const crews = await crewServices.getCrews()
+        setCrews(crews)
+        const crewmen = await crewmanServices.getCrewmen()
+        setCrewmen(crewmen)
     }
 
     useEffect(() => {
@@ -89,8 +87,8 @@ export const useCrews = () => {
     }, [])
 
     return {
-        crewmen,
-        crews,
+        crewmen: crewmenState,
+        crews: crewsState,
         showAddCrewModal,
         showEditCrewModal,
         crewEditModal,

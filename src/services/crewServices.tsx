@@ -24,5 +24,16 @@ export const crewServices = {
             name: crew.name,
             crewmen: [...crew.crewmen, crewmen.filter((crewman: ICrewman) => crewman.id == crewmanId)[0]]
         })
+    },
+    
+    removeCrewmanFromCrew: async (crew: ICrew, crewman: ICrewman) => {
+        await axios.put(`http://localhost:3333/crew/${crew.id}`, {
+            name: crew.name,
+            crewmen: crew.crewmen.filter(crewman_of_crew => crewman_of_crew.id != crewman.id).map(crewman_of_crew => ({ id: crewman_of_crew.id }))
+        })
+    },
+
+    deleteCrew: async (id: string) => {
+        await axios.delete(`http://localhost:3333/crew/${id}`)
     }
 }
