@@ -1,0 +1,21 @@
+{
+    "rocket_system": "ロケットシステム",
+    "rockets": "ロケット",
+    "launches": "打ち上げる",
+    "crews": "クルー",
+    "crewmen": "乗組員",
+    "languageSelection": "言語を選択してください",
+    "addRocket": "ロケットを追加する",
+    "rocketName": "ロケットの名前",
+    "cancel": "キャンセル",
+    "confirm": "確認",
+    "deleteRocketConfirmationMsg": "このロケットを削除してもよろしいですか?",
+    "irreversibleAction": "このアクションは元に戻せません",
+    "launchCode": "打ち上げコード",
+    "date": "日にち",
+    "crew": "クルー",
+    "success": "成功",
+    "launch": "打ち上げる",
+    "edit": "エディット",
+    "del": "デリート"
+}

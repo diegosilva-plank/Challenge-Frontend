@@ -13,7 +13,7 @@ export const Crews = () => {
   const props = useCrews()
 
   return (
-    <>
+    <> 
       <Navbar />
       <Grid>
         {props.crews.map(crew => (

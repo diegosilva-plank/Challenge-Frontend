@@ -3,6 +3,7 @@ import { ChangeEvent, MouseEventHandler, useState } from 'react'
 import { Modal } from '../Modal'
 import { IRocket } from '../../interfaces/IRocket'
 import { ICrew } from '../../interfaces/ICrew'
+import { useTranslation } from 'react-i18next'
 
 interface LaunchRocketModalProps {
   allCrews: ICrew[]
@@ -15,6 +16,8 @@ interface LaunchRocketModalProps {
 }
 
 export const LaunchRocketModal = (props: LaunchRocketModalProps) => {
+  const { t } = useTranslation()
+
   const [launchCodeInput, setLaunchCodeInput] = useState('')
   const [dateInput, setDateInput] = useState('')
   const [crewInput, setCrewInput] = useState('')
@@ -35,17 +38,16 @@ export const LaunchRocketModal = (props: LaunchRocketModalProps) => {
     <Modal close={props.close}>
       <div className="input-div-ctn">
         <div className="input-div">
-          <label>Launch code:</label>
+          <label>{t('launchCode')}:</label>
           <input
             type="text"
-            placeholder="Launch code"
             onChange={handleChange(setLaunchCodeInput)}
           />
         </div>
       </div>
       <div className="input-div-ctn">
         <div className="input-div">
-          <label>Date:</label>
+          <label>{t('date')}:</label>
           <input
             type="date"
             placeholder="MM/DD/YYYY"
@@ -55,7 +57,7 @@ export const LaunchRocketModal = (props: LaunchRocketModalProps) => {
       </div>
       <div className="input-div-ctn">
         <div className="input-div">
-          <label>Crew:</label>
+          <label>{t('crew')}:</label>
           <select onChange={handleChange(setCrewInput)}>
             {props.allCrews.map(crew => (
               <option value={crew.id}>{crew.name}</option>
@@ -65,7 +67,7 @@ export const LaunchRocketModal = (props: LaunchRocketModalProps) => {
       </div>
       <div className="input-div-ctn">
         <div className="input-div-checkbox">
-          <label style={{ fontSize: '22px' }}>Success:&nbsp;&nbsp;</label>
+          <label style={{ fontSize: '22px' }}>{t('success')}:&nbsp;&nbsp;</label>
           <input
             className="checkbox-input"
             type="checkbox"
@@ -76,7 +78,7 @@ export const LaunchRocketModal = (props: LaunchRocketModalProps) => {
       </div>
       <div className="btn-div">
         <div className="btn btn-red" onClick={props.close}>
-          Cancel
+          {t('cancel')}
         </div>
         <div
           className="btn btn-green"
@@ -87,7 +89,7 @@ export const LaunchRocketModal = (props: LaunchRocketModalProps) => {
             crew: crewInput,
           })}
         >
-          Confirm
+          {t('confirm')}
         </div>
       </div>
     </Modal>

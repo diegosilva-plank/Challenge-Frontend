@@ -2,8 +2,8 @@
 
 .card {
     margin: 0 auto;
-    width: 340px;
-    height: 150px;
+    width: 320px;
+    height: 140px;
     display: flex;
     flex-direction: column;
     align-content: center;

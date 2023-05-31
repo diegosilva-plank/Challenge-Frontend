@@ -1,6 +1,7 @@
 import '../../css/modal.css'
 import { ChangeEvent, MouseEventHandler, useState } from 'react'
 import { Modal } from '../Modal'
+import { useTranslation } from 'react-i18next'
 
 interface AddRocketModalProps {
   close: MouseEventHandler<HTMLDivElement>
@@ -8,6 +9,8 @@ interface AddRocketModalProps {
 }
 
 export const AddRocketModal = (props: AddRocketModalProps) => {
+  const { t } = useTranslation() 
+
   const [nameInput, setNameInput] = useState('')
   const handleChange = (event: ChangeEvent) => {
     const element = event.target as HTMLInputElement
@@ -18,20 +21,19 @@ export const AddRocketModal = (props: AddRocketModalProps) => {
     <Modal close={props.close}>
       <div className="input-div-ctn">
         <div className="input-div">
-          <label>Rocket name:</label>
+          <label>{t('rocketName')}:</label>
           <input
             type="text"
-            placeholder="Rocket name"
             onChange={handleChange}
           />
         </div>
       </div>
       <div className="btn-div">
         <div className="btn btn-red" onClick={props.close}>
-          Cancel
+          {t('cancel')}
         </div>
         <div className="btn btn-green" onClick={props.addRocket(nameInput)}>
-          Confirm
+          {t('confirm')}
         </div>
       </div>
     </Modal>

@@ -1,0 +1,21 @@
+{
+    "rocket_system": "Sistema de Foguetes",
+    "rockets": "Foguetes",
+    "launches": "Lançamentos",
+    "crews": "Tripulações",
+    "crewmen": "Tripulantes",
+    "languageSelection": "Selecione o idioma",
+    "addRocket": "Adicionar Foguete",
+    "rocketName": "Nome do foguete",
+    "cancel": "Cancelar",
+    "confirm": "Confirmar",
+    "deleteRocketConfirmationMsg": "Tem certeza que deseja deletar este foguete?",
+    "irreversibleAction": "Essa ação não pode ser revertida",
+    "launchCode": "Código do lançamento",
+    "date": "Data",
+    "crew": "Tripulação",
+    "success": "Sucesso",
+    "launch": "Lançar",
+    "edit": "Editar",
+    "del": "Deletar"
+}

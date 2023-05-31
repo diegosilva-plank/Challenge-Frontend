@@ -1,0 +1,21 @@
+{
+    "rocket_system": "Rocket System",
+    "rockets": "Rockets",
+    "launches": "Launches",
+    "crews": "Crews",
+    "crewmen": "Crewmen",
+    "languageSelection": "Select the language",
+    "addRocket": "Add Rocket",
+    "rocketName": "Rocket name",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "deleteRocketConfirmationMsg": "Are you sure you want to delete this rocket?",
+    "irreversibleAction": "This action cannot be reversed",
+    "launchCode": "Launch code",
+    "date": "Date",
+    "crew": "Crew",
+    "success": "Success",
+    "launch": "Launch",
+    "edit": "Edit",
+    "del": "Delete"
+}
