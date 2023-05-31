@@ -2,6 +2,7 @@ import { ChangeEvent, MouseEventHandler, useState } from 'react'
 import { Modal } from '../Modal'
 import { ILaunch } from '../../interfaces/ILaunch'
 import { ICrew } from '../../interfaces/ICrew'
+import { useTranslation } from 'react-i18next'
 
 interface EditLaunchModalProps {
   allCrews: ICrew[]
@@ -11,6 +12,8 @@ interface EditLaunchModalProps {
 }
 
 export const EditLaunchModal = (props: EditLaunchModalProps) => {
+  const { t } = useTranslation()
+
   const [launchCodeInput, setLaunchCodeInput] = useState(
     props.launch.launch_code
   )
@@ -41,7 +44,7 @@ export const EditLaunchModal = (props: EditLaunchModalProps) => {
     <Modal close={props.close}>
       <div className="input-div-ctn">
         <div className="input-div">
-          <label>Launch code:</label>
+          <label>{t('launchCode')}:</label>
           <input
             type="text"
             placeholder={props.launch.launch_code}
@@ -54,7 +57,7 @@ export const EditLaunchModal = (props: EditLaunchModalProps) => {
       </div>
       <div className="input-div-ctn">
         <div className="input-div">
-          <label>Date:</label>
+          <label>{t('date')}:</label>
           <input
             type="text"
             onFocus={_onFocus}
@@ -66,7 +69,7 @@ export const EditLaunchModal = (props: EditLaunchModalProps) => {
       </div>
       <div className="input-div-ctn">
         <div className="input-div">
-          <label>Crew:</label>
+          <label>{t('crew')}:</label>
           <select onChange={handleChange(setCrewInput)}>
             {props.allCrews.map(crew => (
               <option value={crew.id}>{crew.name}</option>
@@ -76,7 +79,7 @@ export const EditLaunchModal = (props: EditLaunchModalProps) => {
       </div>
       <div className="input-div-ctn">
         <div className="input-div-checkbox">
-          <label style={{ fontSize: '22px' }}>Success:&nbsp;&nbsp;</label>
+          <label style={{ fontSize: '22px' }}>{t('success')}:&nbsp;&nbsp;</label>
           <input
             className="checkbox-input"
             type="checkbox"
@@ -87,7 +90,7 @@ export const EditLaunchModal = (props: EditLaunchModalProps) => {
       </div>
       <div className="btn-div">
         <div className="btn btn-red" onClick={props.close}>
-          Cancel
+          {t('cancel')}
         </div>
         <div
           className="btn btn-green"
@@ -99,7 +102,7 @@ export const EditLaunchModal = (props: EditLaunchModalProps) => {
             crew: crewInput,
           })}
         >
-          Confirm
+          {t('confirm')}
         </div>
       </div>
     </Modal>

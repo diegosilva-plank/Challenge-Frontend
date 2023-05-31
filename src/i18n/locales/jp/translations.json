@@ -1,6 +1,7 @@
 {
     "rocket_system": "ロケットシステム",
-    "rockets": "ロケット",
+    "rocket": "ロケット",
+    "rockets": "ロケッツ",
     "launches": "打ち上げる",
     "crews": "クルー",
     "crewmen": "乗組員",
@@ -17,5 +18,9 @@
     "success": "成功",
     "launch": "打ち上げる",
     "edit": "エディット",
-    "del": "デリート"
+    "del": "デリート",
+    "deleteLaunchConfirmationMsg": "この打ち上げるを削除してもよろしいですか?",
+    "goToRocketsMsg": "ロケッツに移動して打ち上げを作成します",
+    "goToRockets": "ロケッツに行く",
+    "moreInfo": "詳しくは"
 }

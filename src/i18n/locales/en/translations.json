@@ -1,5 +1,6 @@
 {
     "rocket_system": "Rocket System",
+    "rocket": "Rocket",
     "rockets": "Rockets",
     "launches": "Launches",
     "crews": "Crews",
@@ -17,5 +18,9 @@
     "success": "Success",
     "launch": "Launch",
     "edit": "Edit",
-    "del": "Delete"
+    "del": "Delete",
+    "deleteLaunchConfirmationMsg": "Are you sure you want to delete this rocket?",
+    "goToRocketsMsg": "Go to Rockets to create a launch",
+    "goToRockets": "Go to Rockets",
+    "moreInfo": "More info"
 }

@@ -1,5 +1,6 @@
 {
     "rocket_system": "Sistema de Foguetes",
+    "rocket": "Foguete",
     "rockets": "Foguetes",
     "launches": "Lançamentos",
     "crews": "Tripulações",
@@ -17,5 +18,9 @@
     "success": "Sucesso",
     "launch": "Lançar",
     "edit": "Editar",
-    "del": "Deletar"
+    "del": "Deletar",
+    "deleteLaunchConfirmationMsg": "Tem certeza que deseja deletar este lançamento?",
+    "goToRocketsMsg": "Vá à página de Rockets para criar um lançamento",
+    "goToRockets": "Ir para Rockets",
+    "moreInfo": "Mais informações"
 }
