@@ -29,5 +29,12 @@
     "seeCrews": "クルーズを参照",
     "deleteCrewmanConfirmationMsg": "この乗組員を削除してもよろしいですか?",
     "goToCrewsMsg": "この乗組員を新しい乗組員に追加するには、「クルーズ」ページに移動してください",
-    "goToCrews": "クルーズに行く"
+    "goToCrews": "クルーズに行く",
+    "addCrew": "クルーを追加",
+    "crewmanName": "乗組員の名前",
+    "crewName": "クルーの名前",
+    "seeCrewmen": "乗組員を参照",
+    "deleteCrewConfirmationMsg": "このクルーを削除してもよろしいですか?",
+    "removeCrewmanFromCrewConfirmationMsg": "この乗組員をこのクルーから削除してもよろしいですか?",
+    "remove": "削除"
 }

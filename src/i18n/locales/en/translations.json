@@ -29,5 +29,12 @@
     "seeCrews": "See crews",
     "deleteCrewmanConfirmationMsg": "Are you sure you want to delete this crewman?",
     "goToCrewsMsg": "To add this crewman to a new crew, go to Crews page",
-    "goToCrews": "Go to Crews"
+    "goToCrews": "Go to Crews",
+    "addCrew": "Add crew",
+    "crewmanName": "Crewman name",
+    "crewName": "Crew name",
+    "seeCrewmen": "See crewmen",
+    "deleteCrewConfirmationMsg": "Are you sure you want to delete this crew?",
+    "removeCrewmanFromCrewConfirmationMsg": "Are you sure you want to delete this crewman from this crew?",
+    "remove": "Remove"
 }

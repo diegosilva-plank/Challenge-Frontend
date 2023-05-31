@@ -1,6 +1,7 @@
 import { ChangeEvent, MouseEventHandler, useState } from 'react'
 import { Modal } from '../Modal'
 import { ICrew } from '../../interfaces/ICrew'
+import { useTranslation } from 'react-i18next'
 
 interface EditCrewModalProps {
   crew: ICrew
@@ -9,6 +10,8 @@ interface EditCrewModalProps {
 }
 
 export const EditCrewModal = (props: EditCrewModalProps) => {
+  const { t } = useTranslation()
+
   const [nameInput, setNameInput] = useState(props.crew.name)
   const handleChange = (event: ChangeEvent) => {
     const element = event.target as HTMLInputElement
@@ -19,7 +22,7 @@ export const EditCrewModal = (props: EditCrewModalProps) => {
     <Modal close={props.close}>
       <div className="input-div-ctn">
         <div className="input-div">
-          <label>Name:</label>
+          <label>{t('name')}:</label>
           <input
             type="text"
             placeholder={props.crew.name}
@@ -29,13 +32,13 @@ export const EditCrewModal = (props: EditCrewModalProps) => {
       </div>
       <div className="btn-div">
         <div className="btn btn-red" onClick={props.close}>
-          Cancel
+          {t('cancel')}
         </div>
         <div
           className="btn btn-green"
           onClick={props.editCrew(props.crew.id, nameInput)}
         >
-          Confirm
+          {t('confirm')}
         </div>
       </div>
     </Modal>

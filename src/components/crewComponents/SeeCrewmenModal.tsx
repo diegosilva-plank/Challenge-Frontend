@@ -6,6 +6,7 @@ import { ICrew } from '../../interfaces/ICrew'
 import { ICrewman } from '../../interfaces/ICrewman'
 import { RemoveCrewmanModal } from './RemoveCrewmanModal'
 import { AddCrewmanModal } from './AddCrewmanModal'
+import { useTranslation } from 'react-i18next'
 
 interface SeeCrewmenModalProps {
   allCrewmen: ICrewman[]
@@ -29,6 +30,8 @@ interface CrewmanItemProps {
 }
 
 const CrewmanItem = (props: CrewmanItemProps) => {
+  const { t } = useTranslation()
+
   return (
     <div className="input-div-ctn">
       <div className="crewman-div">
@@ -37,7 +40,7 @@ const CrewmanItem = (props: CrewmanItemProps) => {
           className="btn btn-red remove-crewman-btn"
           onClick={props.removeButton}
         >
-          Remove
+          {t('remove')}
         </div>
       </div>
     </div>
@@ -45,6 +48,8 @@ const CrewmanItem = (props: CrewmanItemProps) => {
 }
 
 export const SeeCrewmenModal = (props: SeeCrewmenModalProps) => {
+  const { t } = useTranslation()
+
   const [showAddCrewmanModal, setShowAddCrewmanModal] = useState(false)
   const [showRemoveCrewmanModal, setShowRemoveCrewmanModal] = useState(false)
   const [crewmanRemoveModal, setCrewmanRemoveModal] = useState({} as ICrewman)
@@ -71,7 +76,7 @@ export const SeeCrewmenModal = (props: SeeCrewmenModalProps) => {
           className="btn btn-green add-crewman-btn"
           onClick={showAddCrewmanModalToggle}
         >
-          Add crewman
+          {t('addCrewman')}
         </div>
       </div>
       {showAddCrewmanModal && (

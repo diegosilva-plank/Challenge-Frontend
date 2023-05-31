@@ -29,5 +29,12 @@
     "seeCrews": "Ver tripulações",
     "deleteCrewmanConfirmationMsg": "Tem certeza que deseja deletar este tripulante?",
     "goToCrewsMsg": "Para adicionar este tripulante a uma tripulação, vá para a página de tripulações",
-    "goToCrews": "Ir para Tripulações"
+    "goToCrews": "Ir para Tripulações",
+    "addCrew": "Adicionar tripulação",
+    "crewmanName": "Nome do tripulante",
+    "crewName": "Nome da tripulação",
+    "seeCrewmen": "Ver tripulantes",
+    "deleteCrewConfirmationMsg": "Tem certeza que deseja deleter esta tripulação?",
+    "removeCrewmanFromCrewConfirmationMsg": "Tem certeza que deseja remover este tripulante desta tripulação?",
+    "remove": "Remover"
 }

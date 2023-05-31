@@ -3,6 +3,7 @@ import { ChangeEvent, MouseEventHandler, useState } from 'react'
 import { Modal } from '../Modal'
 import { ICrew } from '../../interfaces/ICrew'
 import { ICrewman } from '../../interfaces/ICrewman'
+import { useTranslation } from 'react-i18next'
 
 interface AddCrewmanModalProps {
   allCrewmen: ICrewman[]
@@ -17,6 +18,8 @@ interface AddCrewmanModalProps {
 }
 
 export const AddCrewmanModal = (props: AddCrewmanModalProps) => {
+  const { t } = useTranslation()
+
   const [crewmanIdInput, setCrewmanIdInput] = useState('')
   const handleChange = (event: ChangeEvent) => {
     const element = event.target as HTMLInputElement
@@ -27,7 +30,7 @@ export const AddCrewmanModal = (props: AddCrewmanModalProps) => {
     <Modal close={props.close}>
       <div className="input-div-ctn">
         <div className="input-div">
-          <label>Crewman name:</label>
+          <label>{t('crewmanName')}:</label>
           <select onChange={handleChange}>
             {props.allCrewmen
               .filter(
@@ -44,7 +47,7 @@ export const AddCrewmanModal = (props: AddCrewmanModalProps) => {
       </div>
       <div className="btn-div">
         <div className="btn btn-red" onClick={props.close}>
-          Cancel
+          {t('cancel')}
         </div>
         <div
           className="btn btn-green"
@@ -54,7 +57,7 @@ export const AddCrewmanModal = (props: AddCrewmanModalProps) => {
             props.setShowModal
           )}
         >
-          Confirm
+          {t('confirm')}
         </div>
       </div>
     </Modal>

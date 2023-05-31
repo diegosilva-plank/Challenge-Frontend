@@ -1,6 +1,7 @@
 import '../../css/modal.css'
 import { ChangeEvent, MouseEventHandler, useState } from 'react'
 import { Modal } from '../Modal'
+import { useTranslation } from 'react-i18next'
 
 interface AddCrewModalProps {
   close: MouseEventHandler<HTMLDivElement>
@@ -8,6 +9,8 @@ interface AddCrewModalProps {
 }
 
 export const AddCrewModal = (props: AddCrewModalProps) => {
+  const { t } = useTranslation()
+
   const [nameInput, setNameInput] = useState('')
   const handleChange = (event: ChangeEvent) => {
     const element = event.target as HTMLInputElement
@@ -18,16 +21,16 @@ export const AddCrewModal = (props: AddCrewModalProps) => {
     <Modal close={props.close}>
       <div className="input-div-ctn">
         <div className="input-div">
-          <label>Crew name:</label>
-          <input type="text" placeholder="Name" onChange={handleChange} />
+          <label>{t('crewName')}:</label>
+          <input type="text" onChange={handleChange} />
         </div>
       </div>
       <div className="btn-div">
         <div className="btn btn-red" onClick={props.close}>
-          Cancel
+          {t('cancel')}
         </div>
         <div className="btn btn-green" onClick={props.addCrew(nameInput)}>
-          Confirm
+          {t('confirm')}
         </div>
       </div>
     </Modal>

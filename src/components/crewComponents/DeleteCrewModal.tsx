@@ -1,6 +1,7 @@
 import { MouseEventHandler } from 'react'
 import { Modal } from '../Modal'
 import { ICrew } from '../../interfaces/ICrew'
+import { useTranslation } from 'react-i18next'
 
 interface DeleteCrewModalProps {
   crew: ICrew
@@ -9,21 +10,23 @@ interface DeleteCrewModalProps {
 }
 
 export const DeleteCrewModal = (props: DeleteCrewModalProps) => {
+  const { t } = useTranslation()
+
   return (
     <Modal close={props.close}>
       <div className="modal-texts">
-        <h3>Are you sure you want to delete this crew?</h3>
-        <p>This action cannot be reversed</p>
+        <h3>{t('deleteCrewConfirmationMsg')}</h3>
+        <p>{t('irreversibleAction')}</p>
       </div>
       <div className="btn-div">
         <div className="btn btn-red" onClick={props.close}>
-          Cancel
+          {t('cancel')}
         </div>
         <div
           className="btn btn-green"
           onClick={props.deleteCrew(props.crew.id)}
         >
-          Confirm
+          {t('confirm')}
         </div>
       </div>
     </Modal>
