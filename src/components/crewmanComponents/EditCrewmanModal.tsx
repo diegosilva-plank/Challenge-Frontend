@@ -1,6 +1,7 @@
 import { ChangeEvent, MouseEventHandler, useState } from 'react'
 import { Modal } from '../Modal'
 import { ICrewman } from '../../interfaces/ICrewman'
+import { useTranslation } from 'react-i18next'
 
 interface EditCrewmanModalProps {
   crewman: ICrewman
@@ -13,6 +14,8 @@ interface EditCrewmanModalProps {
 }
 
 export const EditCrewmanModal = (props: EditCrewmanModalProps) => {
+  const { t } = useTranslation()
+
   const [nameInput, setNameInput] = useState(props.crewman.name)
   const [patentInput, setPatentInput] = useState(props.crewman.patent)
   const handleChangeName = (event: ChangeEvent) => {
@@ -28,7 +31,7 @@ export const EditCrewmanModal = (props: EditCrewmanModalProps) => {
     <Modal close={props.close}>
       <div className="input-div-ctn">
         <div className="input-div">
-          <label>Name:</label>
+          <label>{t('name')}:</label>
           <input
             type="text"
             placeholder={props.crewman.name}
@@ -38,7 +41,7 @@ export const EditCrewmanModal = (props: EditCrewmanModalProps) => {
       </div>
       <div className="input-div-ctn">
         <div className="input-div">
-          <label>Patent:</label>
+          <label>{t('patent')}:</label>
           <input
             type="text"
             placeholder={props.crewman.patent}
@@ -48,13 +51,13 @@ export const EditCrewmanModal = (props: EditCrewmanModalProps) => {
       </div>
       <div className="btn-div">
         <div className="btn btn-red" onClick={props.close}>
-          Cancel
+          {t('cancel')}
         </div>
         <div
           className="btn btn-green"
           onClick={props.editCrewman(props.crewman.id, nameInput, patentInput)}
         >
-          Confirm
+          {t('confirm')}
         </div>
       </div>
     </Modal>

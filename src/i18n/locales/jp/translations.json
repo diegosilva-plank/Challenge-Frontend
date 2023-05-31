@@ -3,7 +3,7 @@
     "rocket": "ロケット",
     "rockets": "ロケッツ",
     "launches": "打ち上げる",
-    "crews": "クルー",
+    "crews": "クルーズ",
     "crewmen": "乗組員",
     "languageSelection": "言語を選択してください",
     "addRocket": "ロケットを追加する",
@@ -22,5 +22,12 @@
     "deleteLaunchConfirmationMsg": "この打ち上げるを削除してもよろしいですか?",
     "goToRocketsMsg": "ロケッツに移動して打ち上げを作成します",
     "goToRockets": "ロケッツに行く",
-    "moreInfo": "詳しくは"
+    "moreInfo": "詳しくは",
+    "addCrewman": "乗組員を追加",
+    "name": "名前",
+    "patent": "特許",
+    "seeCrews": "クルーズを参照",
+    "deleteCrewmanConfirmationMsg": "この乗組員を削除してもよろしいですか?",
+    "goToCrewsMsg": "この乗組員を新しい乗組員に追加するには、「クルーズ」ページに移動してください",
+    "goToCrews": "クルーズに行く"
 }

@@ -22,5 +22,12 @@
     "deleteLaunchConfirmationMsg": "Are you sure you want to delete this rocket?",
     "goToRocketsMsg": "Go to Rockets to create a launch",
     "goToRockets": "Go to Rockets",
-    "moreInfo": "More info"
+    "moreInfo": "More info",
+    "addCrewman": "Add Crewman",
+    "name": "Name",
+    "patent": "Patent",
+    "seeCrews": "See crews",
+    "deleteCrewmanConfirmationMsg": "Are you sure you want to delete this crewman?",
+    "goToCrewsMsg": "To add this crewman to a new crew, go to Crews page",
+    "goToCrews": "Go to Crews"
 }

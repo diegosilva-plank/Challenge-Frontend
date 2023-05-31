@@ -1,6 +1,7 @@
 import '../../css/modal.css'
 import { ChangeEvent, MouseEventHandler, useState } from 'react'
 import { Modal } from '../Modal'
+import { useTranslation } from 'react-i18next'
 
 interface AddCrewmanModalProps {
   close: MouseEventHandler<HTMLDivElement>
@@ -11,6 +12,8 @@ interface AddCrewmanModalProps {
 }
 
 export const AddCrewmanModal = (props: AddCrewmanModalProps) => {
+  const { t } = useTranslation()
+
   const [nameInput, setNameInput] = useState('')
   const [patentInput, setPatentInput] = useState('')
   const handleChangeName = (event: ChangeEvent) => {
@@ -26,13 +29,13 @@ export const AddCrewmanModal = (props: AddCrewmanModalProps) => {
     <Modal close={props.close}>
       <div className="input-div-ctn">
         <div className="input-div">
-          <label>Name:</label>
+          <label>{t('name')}:</label>
           <input type="text" placeholder="Name" onChange={handleChangeName} />
         </div>
       </div>
       <div className="input-div-ctn">
         <div className="input-div">
-          <label>Patent:</label>
+          <label>{t('patent')}:</label>
           <input
             type="text"
             placeholder="Patent"
@@ -42,13 +45,13 @@ export const AddCrewmanModal = (props: AddCrewmanModalProps) => {
       </div>
       <div className="btn-div">
         <div className="btn btn-red" onClick={props.close}>
-          Cancel
+          {t('cancel')}
         </div>
         <div
           className="btn btn-green"
           onClick={props.addCrewman(nameInput, patentInput)}
         >
-          Confirm
+          {t('confirm')}
         </div>
       </div>
     </Modal>

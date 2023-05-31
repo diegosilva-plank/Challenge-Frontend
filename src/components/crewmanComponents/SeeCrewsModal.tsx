@@ -2,6 +2,7 @@ import '../../css/modal.css'
 import { MouseEventHandler } from 'react'
 import { Modal } from '../Modal'
 import { ICrewman } from '../../interfaces/ICrewman'
+import { useTranslation } from 'react-i18next'
 
 interface SeeCrewsModalProps {
   crewman: ICrewman
@@ -9,16 +10,17 @@ interface SeeCrewsModalProps {
 }
 
 export const SeeCrewsModal = (props: SeeCrewsModalProps) => {
-  console.log(props.crewman)
+  const { t } = useTranslation()
+
   return (
     <Modal close={props.close}>
       {props.crewman.crews.map(crew => (
         <h2>{crew.name}</h2>
       ))}
-      <h3>To add this crewman to a new crew, go to Crews page</h3>
+      <h3>{t('goToCrewsMsg')}</h3>
       <div className="btn-div">
         <a href="crews" style={{ textDecoration: 'none' }}>
-          <div className="btn btn-green go-to-crews-btn">Go to Crews</div>
+          <div className="btn btn-green go-to-crews-btn">{t('goToCrews')}</div>
         </a>
       </div>
     </Modal>
