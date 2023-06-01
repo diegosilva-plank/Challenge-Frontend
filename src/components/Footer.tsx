@@ -14,7 +14,7 @@ export const Footer = () => {
     <footer id="footer">
       <div id="footer-div">
         <div id="footer-elements-div">
-          <div>© 2023 Rocket System, Inc.</div>
+          <div id="system-name">© 2023 Rocket System, Inc.</div>
           <div id="language-options">
             <div>{t('languageSelection')}:&nbsp;</div>
             <button className='language-btn' style={{marginLeft: 0}} onClick={changeLanguage} value='en'>English</button>
