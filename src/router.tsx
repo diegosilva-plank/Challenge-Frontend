@@ -1,6 +1,6 @@
 import { createBrowserRouter } from 'react-router-dom'
 import { Rockets } from './routes/Rockets'
-import { Index } from './routes/Index'
+import { Home } from './routes/Home'
 import { Launches } from './routes/Launches'
 import { Crewmen } from './routes/Crewmen'
 import { Crews } from './routes/Crews'
@@ -8,7 +8,7 @@ import { Crews } from './routes/Crews'
 export const router = createBrowserRouter([
   {
     path: '/',
-    element: <Index />,
+    element: <Home />,
   },
   {
     path: 'rockets',

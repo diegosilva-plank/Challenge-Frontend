@@ -2,7 +2,7 @@ import '../css/index.css'
 import { Footer } from '../components/Footer'
 import { Navbar } from '../components/Navbar'
 
-export const Index = () => {
+export const Home = () => {
   return (
     <>
       <Navbar />

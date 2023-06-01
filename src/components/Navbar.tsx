@@ -1,5 +1,6 @@
 import { useTranslation } from 'react-i18next'
 import '../css/navbar.css'
+import { Link } from 'react-router-dom'
 
 export const Navbar = () => {
   const { t } = useTranslation() 
@@ -9,12 +10,7 @@ export const Navbar = () => {
       <input type="checkbox" id="nav-check" />
       <div className="nav-header">
         <div className="nav-title">
-          <a
-            href="/"
-            style={{ left: '0px', color: 'white', textDecoration: 'none' }}
-          >
-            {t('rocket_system')}
-          </a>
+          <Link to="/" style={{ left: '0px', color: 'white', textDecoration: 'none' }}> {t('rocket_system')}</Link>
         </div>
       </div>
       <div className="nav-btn">
@@ -26,18 +22,10 @@ export const Navbar = () => {
       </div>
 
       <div className="nav-links">
-        <a className="menu-item" href="rockets">
-          {t('rockets')}
-        </a>
-        <a className="menu-item" href="launches">
-          {t('launches')}
-        </a>
-        <a className="menu-item" href="crews">
-          {t('crews')}
-        </a>
-        <a className="menu-item" href="crewmen">
-          {t('crewmen')}
-        </a>
+        <Link to="/rockets" className="menu-item">{t('rockets')}</Link>
+        <Link to="/launches" className="menu-item">{t('launches')}</Link>
+        <Link to="/crews" className="menu-item">{t('crews')}</Link>
+        <Link to="/crewmen" className="menu-item">{t('crewmen')}</Link>
       </div>
     </div>
   )
