@@ -22,10 +22,10 @@ export const Navbar = () => {
       </div>
 
       <div className="nav-links">
-        <Link to="/rockets" className="menu-item">{t('rockets')}</Link>
-        <Link to="/launches" className="menu-item">{t('launches')}</Link>
-        <Link to="/crews" className="menu-item">{t('crews')}</Link>
-        <Link to="/crewmen" className="menu-item">{t('crewmen')}</Link>
+        <Link data-cy="nav-rockets" to="/rockets" className="menu-item">{t('rockets')}</Link>
+        <Link data-cy="nav-launches"to="/launches" className="menu-item">{t('launches')}</Link>
+        <Link data-cy="nav-crews" to="/crews" className="menu-item">{t('crews')}</Link>
+        <Link data-cy="nav-crewmen" to="/crewmen" className="menu-item">{t('crewmen')}</Link>
       </div>
     </div>
   )

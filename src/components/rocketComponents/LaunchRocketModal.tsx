@@ -40,6 +40,7 @@ export const LaunchRocketModal = (props: LaunchRocketModalProps) => {
         <div className="input-div">
           <label>{t('launchCode')}:</label>
           <input
+            data-cy="launch-code-input"
             type="text"
             onChange={handleChange(setLaunchCodeInput)}
           />
@@ -49,6 +50,7 @@ export const LaunchRocketModal = (props: LaunchRocketModalProps) => {
         <div className="input-div">
           <label>{t('date')}:</label>
           <input
+            data-cy="date-input"
             type="date"
             placeholder="MM/DD/YYYY"
             onChange={handleChange(setDateInput)}

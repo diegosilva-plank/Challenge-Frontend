@@ -23,6 +23,7 @@ export const AddRocketModal = (props: AddRocketModalProps) => {
         <div className="input-div">
           <label>{t('rocketName')}:</label>
           <input
+            data-cy="rocket-name-input"
             type="text"
             onChange={handleChange}
           />
@@ -32,7 +33,7 @@ export const AddRocketModal = (props: AddRocketModalProps) => {
         <div className="btn btn-red" onClick={props.close}>
           {t('cancel')}
         </div>
-        <div className="btn btn-green" onClick={props.addRocket(nameInput)}>
+        <div data-cy="add-rocket-confirm-btn" className="btn btn-green" onClick={props.addRocket(nameInput)}>
           {t('confirm')}
         </div>
       </div>

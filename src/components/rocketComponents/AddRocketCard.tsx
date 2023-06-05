@@ -13,6 +13,7 @@ export const AddRocketCard = (props: AddRocketModalProps) => {
     <Card>
       <div className="btn-div">
         <div
+          data-cy="add-rocket-btn"
           className="btn btn-green add-rocket-btn"
           onClick={props.addRocketBtn}
         >

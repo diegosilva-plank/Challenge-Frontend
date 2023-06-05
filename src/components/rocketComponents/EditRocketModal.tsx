@@ -24,6 +24,7 @@ export const EditRocketModal = (props: EditRocketModalProps) => {
         <div className="input-div">
           <label>{t('rocketName')}:</label>
           <input
+            data-cy="rocket-name-input"
             type="text"
             placeholder={props.rocket.name}
             onChange={handleChange}
@@ -35,6 +36,7 @@ export const EditRocketModal = (props: EditRocketModalProps) => {
           {t('cancel')}
         </div>
         <div
+          data-cy="edit-rocket-confirm-btn"
           className="btn btn-green"
           onClick={props.editRocket(props.rocket.id, nameInput)}
         >
