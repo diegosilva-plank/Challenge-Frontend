@@ -33,6 +33,7 @@ export const EditCrewmanModal = (props: EditCrewmanModalProps) => {
         <div className="input-div">
           <label>{t('name')}:</label>
           <input
+            data-cy="crewman-name-input"
             type="text"
             placeholder={props.crewman.name}
             onChange={handleChangeName}
@@ -43,6 +44,7 @@ export const EditCrewmanModal = (props: EditCrewmanModalProps) => {
         <div className="input-div">
           <label>{t('patent')}:</label>
           <input
+            data-cy="crewman-patent-input"
             type="text"
             placeholder={props.crewman.patent}
             onChange={handleChangePatent}
@@ -54,6 +56,7 @@ export const EditCrewmanModal = (props: EditCrewmanModalProps) => {
           {t('cancel')}
         </div>
         <div
+          data-cy="edit-crewman-confirm-btn"
           className="btn btn-green"
           onClick={props.editCrewman(props.crewman.id, nameInput, patentInput)}
         >

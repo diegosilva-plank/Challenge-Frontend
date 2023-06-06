@@ -24,6 +24,7 @@ export const EditCrewModal = (props: EditCrewModalProps) => {
         <div className="input-div">
           <label>{t('name')}:</label>
           <input
+            data-cy="crew-name-input"
             type="text"
             placeholder={props.crew.name}
             onChange={handleChange}
@@ -35,6 +36,7 @@ export const EditCrewModal = (props: EditCrewModalProps) => {
           {t('cancel')}
         </div>
         <div
+          data-cy="edit-crew-confirm-btn"
           className="btn btn-green"
           onClick={props.editCrew(props.crew.id, nameInput)}
         >

@@ -30,13 +30,14 @@ export const AddCrewmanModal = (props: AddCrewmanModalProps) => {
       <div className="input-div-ctn">
         <div className="input-div">
           <label>{t('name')}:</label>
-          <input type="text" placeholder="Name" onChange={handleChangeName} />
+          <input data-cy="crewman-name-input" type="text" placeholder="Name" onChange={handleChangeName} />
         </div>
       </div>
       <div className="input-div-ctn">
         <div className="input-div">
           <label>{t('patent')}:</label>
           <input
+            data-cy="crewman-patent-input"
             type="text"
             placeholder="Patent"
             onChange={handleChangePatent}
@@ -48,6 +49,7 @@ export const AddCrewmanModal = (props: AddCrewmanModalProps) => {
           {t('cancel')}
         </div>
         <div
+          data-cy="add-crewman-confirm-btn"
           className="btn btn-green"
           onClick={props.addCrewman(nameInput, patentInput)}
         >

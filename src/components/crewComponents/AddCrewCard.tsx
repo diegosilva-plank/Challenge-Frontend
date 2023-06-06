@@ -12,7 +12,7 @@ export const AddCrewCard = (props: AddCrewModalProps) => {
   return (
     <Card>
       <div className="btn-div">
-        <div className="btn btn-green add-crew-btn" onClick={props.addCrewBtn}>
+        <div data-cy="add-crew-btn" className="btn btn-green add-crew-btn" onClick={props.addCrewBtn}>
           {t('addCrew')}
         </div>
       </div>

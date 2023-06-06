@@ -12,7 +12,7 @@ export const Modal = (props: ModalProps) => {
         <span className="close" onClick={props.close}>
           &times;
         </span>
-        <div className="modal-fields">{props.children}</div>
+        <div className="modal-fields" data-cy="modal-fields">{props.children}</div>
       </div>
     </div>
   )

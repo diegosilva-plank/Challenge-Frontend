@@ -23,6 +23,7 @@ export const DeleteCrewmanModal = (props: DeleteCrewmanModalProps) => {
           {t('cancel')}
         </div>
         <div
+          data-cy="delete-crewman-confirm-btn"
           className="btn btn-green"
           onClick={props.deleteCrewman(props.crewman.id)}
         >

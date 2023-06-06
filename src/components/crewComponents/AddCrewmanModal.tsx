@@ -50,6 +50,7 @@ export const AddCrewmanModal = (props: AddCrewmanModalProps) => {
           {t('cancel')}
         </div>
         <div
+          data-cy="add-crewman-to-crew-confirm-btn"
           className="btn btn-green"
           onClick={props.addCrewmanToCrew(
             crewmanIdInput,

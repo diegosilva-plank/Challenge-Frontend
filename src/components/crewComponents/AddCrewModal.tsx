@@ -22,14 +22,14 @@ export const AddCrewModal = (props: AddCrewModalProps) => {
       <div className="input-div-ctn">
         <div className="input-div">
           <label>{t('crewName')}:</label>
-          <input type="text" onChange={handleChange} />
+          <input data-cy="crew-name-input" type="text" onChange={handleChange} />
         </div>
       </div>
       <div className="btn-div">
         <div className="btn btn-red" onClick={props.close}>
           {t('cancel')}
         </div>
-        <div className="btn btn-green" onClick={props.addCrew(nameInput)}>
+        <div data-cy="add-crew-confirm-btn" className="btn btn-green" onClick={props.addCrew(nameInput)}>
           {t('confirm')}
         </div>
       </div>
