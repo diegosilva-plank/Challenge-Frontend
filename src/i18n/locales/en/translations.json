@@ -19,7 +19,7 @@
     "launch": "Launch",
     "edit": "Edit",
     "del": "Delete",
-    "deleteLaunchConfirmationMsg": "Are you sure you want to delete this rocket?",
+    "deleteLaunchConfirmationMsg": "Are you sure you want to delete this launch?",
     "goToRocketsMsg": "Go to Rockets to create a launch",
     "goToRockets": "Go to Rockets",
     "moreInfo": "More info",

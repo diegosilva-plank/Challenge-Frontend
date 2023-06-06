@@ -1,7 +1,7 @@
 import { Footer } from '../components/Footer'
 import { Grid } from '../components/Grid'
 import { Navbar } from '../components/Navbar'
-import { GoToRocketsCard } from '../components/launchComponents/GoToRocketsCards'
+import { GoToRocketsCard } from '../components/launchComponents/GoToRocketsCard'
 import { LaunchCard } from '../components/launchComponents/LaunchCard'
 import { MoreInfoModal } from '../components/launchComponents/MoreInfoModal'
 import { EditLaunchModal } from '../components/launchComponents/EditLaunchModal'
