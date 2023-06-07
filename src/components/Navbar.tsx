@@ -6,7 +6,7 @@ export const Navbar = () => {
   const { t } = useTranslation() 
 
   return (
-    <div className="nav">
+    <div className="nav" data-testid="navbar">
       <input type="checkbox" id="nav-check" />
       <div className="nav-header">
         <div className="nav-title">

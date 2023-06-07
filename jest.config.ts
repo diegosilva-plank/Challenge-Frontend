@@ -18,5 +18,5 @@ export default {
     testEnvironment: "jsdom",
     moduleNameMapper: {
         '^.+\\.(css|less)$': '<rootDir>/config/CSSStub.js'
-    }
+    },
 };
