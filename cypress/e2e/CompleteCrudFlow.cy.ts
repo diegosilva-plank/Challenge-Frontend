@@ -4,7 +4,7 @@ const newCrewman1Name = 'New Cypress Test Crewman 1'
 const patent = 'Cypress Test'
 const newPatent = 'New Cypress Test'
 
-describe('crewmen page', () => {
+describe('creating crewmen on crewmen page', () => {
 
     it('adds crewman1', () => {
         cy.visit('/crewmen')
@@ -58,7 +58,7 @@ describe('crewmen page', () => {
 const crewName = 'Cypress Test Crew'
 const newCrewName = 'New Cypress Test Crew'
 
-describe('crews page', () => {
+describe('creating a crew on crews page', () => {
 
     it('adds a crew', () => {
         cy.visit('/crews')
@@ -113,43 +113,128 @@ describe('crews page', () => {
     it('deletes crewman1 from the crew', () => {
         cy.visit('/crews')
         cy.get('.grid').find('h2').contains(crewName).siblings().find('.crewmen-btn').click()
-        cy.get('[data-cy=modal-fields]').find('h2').contains(crewman1Name).siblings('div').click()
-        // cy.get('[data-cy=modal-fields]').find('h2').contains(crewman1Name).siblings('.remove-crewman-btn').click()
-        // .contains(crewman1Name)
-        // .siblings().find('.remove-crewman-btn').click()
-        // cy.get('.add-crewman-btn')
-        // cy.get('.modal-fields')
-        // cy.get('[data-cy=remove-crewman-from-crew-confirm-btn]').click()
-        // cy.get('.modal-fields').find('h2').contains(crewman1Name).should('not.exist')
+        cy.get('[data-cy=modal-fields]').find('h2').contains(crewman1Name).siblings('.remove-crewman-btn').click()
+        cy.get('[data-cy=remove-crewman-from-crew-confirm-btn]').click()
+        cy.get('[data-cy=modal-fields]').find('h2').contains(crewman1Name).should('not.exist')
     })
 })
 
-// describe('rockets page', () => {
+describe('checking the crew on cerwman modal', () => {
 
-//     const rocketName = 'Cypress Test Rocket'
-//     const newRocketName = 'New Cypress Test Rocket'
-//     const launchCode = '#CrypressTestLaunch'
+    it('checks crewman1 crews', () => {
+        cy.visit('/crewmen')
+        cy.get('.grid').find('h2').contains(crewman1Name).siblings().find('.crews-btn').click()
+        cy.get('[data-cy=modal-fields]').should('not.contain', 'h2')
+    })
 
-//     it('adds a rocket', () => {
-//         cy.visit('/rockets')
-//         cy.get('[data-cy=add-rocket-btn]').click()
-//         cy.get('[data-cy=rocket-name-input]').type(rocketName)
-//         cy.get('[data-cy=add-rocket-confirm-btn]').click()
-//         cy.get('.grid').find('h2').contains(rocketName).should('exist')
-//     })
+    it('checks crewman2 crews', () => {
+        cy.visit('/crewmen')
+        cy.get('.grid').find('h2').contains(crewman2Name).siblings().find('.crews-btn').click()
+        cy.get('[data-cy=modal-fields]').find('h2').contains(crewName).should('exist')
+    })
+})
 
-//     it('edits a rocket', () => {
-//         cy.visit('/rockets')
-//         cy.get('.grid').find('h2').contains(rocketName).siblings().find('.edit-btn').click()
-//         cy.get('[data-cy=rocket-name-input]').type(newRocketName)
-//         cy.get('[data-cy=edit-rocket-confirm-btn]').click()
-//         cy.get('.grid').find('h2').contains(newRocketName).should('exist')
-//     })
+const rocketName = 'Cypress Test Rocket'
+const newRocketName = 'New Cypress Test Rocket'
+const launchCode = '#CrypressTestLaunch'
+const newLaunchCode = '#NewCypressTestLaunch'
+const launchDate = '12/12/2009'
+const newLaunchDate = '2023-06-06'
 
-//     it('launches a rocket', () => {
-//         cy.visit('/rockets')
-//         cy.get('.grid').find('h2').contains(newRocketName).siblings().find('.launch-btn').click()
-//         cy.get('[data-cy=launch-code-input]').type(launchCode)
-//         cy.get('[data-cy=date-input]').invoke('removeAttr','type').type('12/12/2009');
-//     })
-// })
+describe('creating and launching a rocket', () => {
+
+    it('adds a rocket', () => {
+        cy.visit('/rockets')
+        cy.get('[data-cy=add-rocket-btn]').click()
+        cy.get('[data-cy=rocket-name-input]').type(rocketName)
+        cy.get('[data-cy=add-rocket-confirm-btn]').click()
+        cy.get('.grid').find('h2').contains(rocketName).should('exist')
+    })
+
+    it('edits a rocket', () => {
+        cy.visit('/rockets')
+        cy.get('.grid').find('h2').contains(rocketName).siblings().find('.edit-btn').click()
+        cy.get('[data-cy=rocket-name-input]').type(newRocketName)
+        cy.get('[data-cy=edit-rocket-confirm-btn]').click()
+        cy.get('.grid').find('h2').contains(newRocketName).should('exist')
+    })
+
+    it('launches a rocket', () => {
+        cy.visit('/rockets')
+        cy.get('.grid').find('h2').contains(newRocketName).siblings().find('.launch-btn').click()
+        cy.get('[data-cy=launch-code-input]').type(launchCode)
+        cy.get('[data-cy=date-input]').invoke('removeAttr','type').type(launchDate);
+        cy.get('select').select(crewName)
+        cy.get('.checkbox-input').check()
+        cy.get('[data-cy=launch-rocket-confirm-btn]').click()
+    })
+
+    it('checks the launch\'s info', () => {
+        cy.visit('/launches')
+        cy.get('.grid').find('h2').contains(launchCode).siblings().find('.info-btn').click()
+        cy.get('[data-cy=modal-fields]').find('h2').contains(`Launch code: ${launchCode}`).should('exist')
+        cy.get('[data-cy=modal-fields]').find('h2').contains(`Rocket: ${newRocketName}`).should('exist')
+        cy.get('[data-cy=modal-fields]').find('h2').contains(`Date: ${launchDate}`).should('exist')
+        cy.get('[data-cy=modal-fields]').find('h2').contains(`Crew: ${crewName}`).should('exist')
+        cy.get('[data-cy=modal-fields]').find('h2').contains(`Success: YES`).should('exist')
+    })
+
+    it('edits the launch', () => {
+        cy.visit('/launches')
+        cy.get('.grid').find('h2').contains(launchCode).siblings().find('.edit-btn').click()
+        cy.get('[data-cy=launch-code-input]').type(newLaunchCode)
+        cy.get('[data-cy=date-input]').invoke('removeAttr','type').type(newLaunchDate);
+        cy.get('select').select(crewName)
+        cy.get('.checkbox-input').check()
+        cy.get('.checkbox-input').uncheck()
+        cy.get('[data-cy=edit-launch-confirm-btn]').click()
+    })
+
+    it('checks the edited launch\'s info', () => {
+        cy.visit('/launches')
+        cy.get('.grid').find('h2').contains(newLaunchCode).siblings().find('.info-btn').click()
+        cy.get('[data-cy=modal-fields]').find('h2').contains(`Launch code: ${newLaunchCode}`).should('exist')
+        cy.get('[data-cy=modal-fields]').find('h2').contains(`Rocket: ${newRocketName}`).should('exist')
+        cy.get('[data-cy=modal-fields]').find('h2').contains(`Date: ${newLaunchDate}`).should('exist')
+        cy.get('[data-cy=modal-fields]').find('h2').contains(`Crew: ${crewName}`).should('exist')
+        cy.get('[data-cy=modal-fields]').find('h2').contains(`Success: NO`).should('exist')
+    })
+})
+
+describe('deleting everything', () => {
+
+    it('deletes the launch', () => {
+        cy.visit('/launches')
+        cy.get('.grid').find('h2').contains(newLaunchCode).siblings().find('.delete-btn').click()
+        cy.get('[data-cy=modal-fields]').find('.btn-green').click()
+        cy.get('.grid').find('h2').should('not.contain', newLaunchCode)
+    })
+
+    it('deletes the rocket', () => {
+        cy.visit('/rockets')
+        cy.get('.grid').find('h2').contains(newRocketName).siblings().find('.delete-btn').click()
+        cy.get('[data-cy=modal-fields]').find('.btn-green').click()
+        cy.get('.grid').find('h2').should('not.contain', newRocketName)
+    })
+
+    it('deletes the crew', () => {
+        cy.visit('/crews')
+        cy.get('.grid').find('h2').contains(crewName).siblings().find('.delete-btn').click()
+        cy.get('[data-cy=modal-fields]').find('.btn-green').click()
+        cy.get('.grid').find('h2').should('not.contain', crewName)
+    })
+
+    it('deletes crewman1', () => {
+        cy.visit('/crewmen')
+        cy.get('.grid').find('h2').contains(crewman1Name).siblings().find('.delete-btn').click()
+        cy.get('[data-cy=modal-fields]').find('.btn-green').click()
+        cy.get('.grid').find('h2').should('not.contain', crewman1Name)
+    })
+
+    it('deletes crewman2', () => {
+        cy.visit('/crewmen')
+        cy.get('.grid').find('h2').contains(crewman2Name).siblings().find('.delete-btn').click()
+        cy.get('[data-cy=modal-fields]').find('.btn-green').click()
+        cy.get('.grid').find('h2').should('not.contain', crewman2Name)
+    })
+})

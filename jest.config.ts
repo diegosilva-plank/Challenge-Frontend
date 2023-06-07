@@ -13,7 +13,7 @@ export default {
     ],
     moduleFileExtensions: ["ts", "tsx", "js", "jsx", "json", "node"],
     collectCoverageFrom: [
-        "src/components/__tests__/*.tsx", 
+        "src/components/*.tsx", 
     ],
     testEnvironment: "jsdom",
     moduleNameMapper: {

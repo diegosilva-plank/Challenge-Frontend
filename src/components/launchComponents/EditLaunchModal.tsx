@@ -46,6 +46,7 @@ export const EditLaunchModal = (props: EditLaunchModalProps) => {
         <div className="input-div">
           <label>{t('launchCode')}:</label>
           <input
+            data-cy="launch-code-input"
             type="text"
             placeholder={props.launch.launch_code}
             onChange={handleChange(
@@ -59,6 +60,7 @@ export const EditLaunchModal = (props: EditLaunchModalProps) => {
         <div className="input-div">
           <label>{t('date')}:</label>
           <input
+            data-cy="date-input"
             type="text"
             onFocus={_onFocus}
             onBlur={_onBlur}
@@ -93,6 +95,7 @@ export const EditLaunchModal = (props: EditLaunchModalProps) => {
           {t('cancel')}
         </div>
         <div
+          data-cy="edit-launch-confirm-btn"
           className="btn btn-green"
           onClick={props.editLaunch({
             ...props.launch,

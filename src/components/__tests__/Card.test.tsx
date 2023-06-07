@@ -1,5 +1,5 @@
 import '@testing-library/jest-dom'
-import { cleanup, render, screen } from "@testing-library/react"
+import { cleanup, render, screen  } from "@testing-library/react"
 import { Card } from '../Card'
 
 afterEach(() => {

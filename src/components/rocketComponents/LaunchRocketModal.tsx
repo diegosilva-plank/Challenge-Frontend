@@ -83,6 +83,7 @@ export const LaunchRocketModal = (props: LaunchRocketModalProps) => {
           {t('cancel')}
         </div>
         <div
+          data-cy="launch-rocket-confirm-btn"
           className="btn btn-green"
           onClick={props.addLaunch(props.rocket.id, {
             launch_code: launchCodeInput,
